@@ -16,6 +16,8 @@ npm install mustache minimist latinize readline
 
 # Usage
 
+Email guesser accepts a file of names separated by new lines, such as output from [theHarvester](https://github.com/laramies/theHarvester). The email addresses can then be validated using [iSMTP](https://github.com/altjx/ipwn). 
+
 Read names from test.txt and output email guesses to output.txt with domain example.com
 
 ```
@@ -38,6 +40,7 @@ wang-kevin@example.com
 k-wang@example.com
 w-kevin@example.com
 ```
+
 # License 
 
 MIT License
