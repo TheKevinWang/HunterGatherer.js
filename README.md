@@ -4,7 +4,7 @@ Organizations tend to have predicatable email addresses for employees. This Node
 
 # Requirements
 
-Node.js 6.9.2 or later
+Node.js 6.9.2 or later  
 mustache -- template engine   
 minimist -- argument parser  
 latinize -- convert strings to latin characters   
