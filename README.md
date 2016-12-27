@@ -21,7 +21,7 @@ Read names from test.txt and output email guesses to output.txt with domain exam
 ```
 node EmailGuesser.js -f test.txt -o output.txt -d example.com
 ```
-Generate emails for name provided, using separators "_" and "-", with output. 
+Generate emails for name provided, using separators "_" and "-", with output to console. 
 ```
 node EmailGuesser.js -n "Kevin Wang" -s "_,-" -d example.com
 
