@@ -1,5 +1,6 @@
 # EmailGuesser
-Guess the email address given name and domain. 
+
+Organizations tend to have predicatable email addresses for employees. This Node.js script uses common name combinations to generate email addresses. 
 
 # Requirements
 
