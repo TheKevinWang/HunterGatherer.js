@@ -1,6 +1,6 @@
 # EmailGuesser
 
-Organizations tend to have predicatable email addresses for employees, such as kevin.wang@example.com. This Node.js script uses common name combinations to generate email addresses. 
+Organizations tend to have predicatable email addresses for employees, such as kevin.wang@example.com. This Node.js script uses common name combinations to generate a list of common email addresses. 
 
 # Requirements
 
