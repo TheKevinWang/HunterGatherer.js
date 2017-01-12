@@ -18,7 +18,7 @@ npm install mustache minimist latinize readline
 
 Email guesser accepts a file of names separated by new lines, such as output from [theHarvester](https://github.com/laramies/theHarvester). The email addresses can then be validated using [iSMTP](https://github.com/altjx/ipwn). 
 
-Read names from test.txt and output email guesses to output.txt with domain example.com
+Read names from test.txt and output email guesses to output.txt with domain example.com. The default separator is ".".  
 
 ```
 node EmailGuesser.js -f test.txt -o output.txt -d example.com
