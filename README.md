@@ -49,6 +49,7 @@ You can also provide your own template using -t. This is useful when you already
 {{domain}} = email domain Ex: gmail.com  
 ```
 node EmailGuesser.js -n "Kevin Wang" -s "_,-" -d example.com -t {{fi}}{{ln}}@{{domain}}
+
 kwang@example.com
 ```
 
