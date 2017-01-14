@@ -41,6 +41,19 @@ k-wang@example.com
 w-kevin@example.com
 ```
 
+You can also provide your own template using -t. This is useful when you already know the email naming algorithm. The format of the template is: 
+
+{{fn}} = first name
+{{fi}} = first initial
+{{ln}} = last name
+{{li}} = last initial
+{{domain}} = email domain Ex: gmail.com
+-n "Kevin Wang" -s "_,-" -d example.com -t {{fi}}{{ln}}@{{domain}}
+```
+kwang@example.com
+```
+
+
 # License 
 
 MIT License
