@@ -1,6 +1,6 @@
 # EmailGuesser
 
-Organizations tend to have predicatable email addresses for employees, such as kevin.wang@example.com. This Node.js script uses common name combinations to generate a list of email addresses. Email guesser accepts a file of names separated by new lines, such as output from [theHarvester](https://github.com/laramies/theHarvester). The email addresses can then be validated using [iSMTP](https://github.com/altjx/ipwn). 
+Organizations tend to have predicatable email addresses for employees, such as kevin.wang@example.com. EmailGuesser uses common name combinations to generate a list of email addresses. EmailGuesser accepts a file of names separated by new lines, such as output from [theHarvester](https://github.com/laramies/theHarvester). The email addresses can then be validated using [iSMTP](https://github.com/altjx/ipwn). 
 
 
 # Requirements
