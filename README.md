@@ -47,7 +47,7 @@ You can also provide your own template using -t. This is useful when you already
 {{li}} = last initial  
 {{domain}} = email domain Ex: gmail.com  
 ```
-node EmailGuesser.js -n "Kevin Wang" -s "_,-" -d example.com -t {{fi}}{{ln}}@{{domain}}
+node EmailGuesser.js -n "Kevin Wang" -d example.com -t {{fi}}{{ln}}@{{domain}}
 
 kwang@example.com
 ```
