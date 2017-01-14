@@ -25,8 +25,7 @@ var template = argv.t || `{{#template}}
 {{ln}}{{.}}{{fn}}@{{domain}}
 {{fi}}{{.}}{{ln}}@{{domain}}
 {{li}}{{.}}{{fn}}@{{domain}}
-{{/template}}
-`;
+{{/template}}`;
 //if a file with names is provided, guess emails line by line
 if (argv.f) {
     var lineReader = require('readline').createInterface({
@@ -46,7 +45,7 @@ function output(output) {
             if (err) console.error("append failed")
         })
     } else {
-        console.log(output);
+        process.stdout.write(output);
     }
 }
 
@@ -59,7 +58,7 @@ function guessEmail(name, separators) {
     var nameArray = name.replace(/[^a-zA-Z ]/, '').split(" ");
     //remove common titles in name
     var nameTitles = ['md', 'dr', 'jr', 'sr', 'jd'];
-    nameArray = nameArray.filter(name => (nameTitles.indexOf (name) < 0));
+    nameArray = nameArray.filter(name => (nameTitles.indexOf(name) < 0));
     var firstName = nameArray[0]; //first element
     var lastName = nameArray[nameArray.length - 1]; //last element
 
