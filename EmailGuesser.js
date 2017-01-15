@@ -31,30 +31,10 @@ var template = argv.t || `{{#template}}
 {{fi}}{{.}}{{ln}}@{{domain}}
 {{li}}{{.}}{{fn}}@{{domain}}
 {{/template}}`;
-//if a file with names is provided, guess emails line by line
-if (argv.f) {
-    var names = [];
-    var lineReader = require('readline').createInterface({
-        input: fs.createReadStream(argv.f)
-    });
-    lineReader.on('line', function (line) {
-        names.push(guessEmail(line, argv.s));
-    });
-    lineReader.on('close', () => {
-        outputEmails(names);
-    })
 
-} else {
-    outputEmails(guessEmail(argv.n, argv.s));
-}
-//promisify email-existence
-function emailCheck(email) {
-    return new Promise((resolve, reject) => {
-        emailExistence.check(email, (err, data) => {
-            if (err) reject(err);
-            resolve(data)
-        })
-    })
+//capitalize first letter of string
+String.prototype.capitalizeFirstLetter = function () {
+    return this.charAt(0).toUpperCase() + this.slice(1);
 }
 /*output only verified emails if -v specified.
  *if -v verify one by one to prevent socket from overloading and only print verified emails
@@ -75,22 +55,46 @@ var outputEmails = Promise.coroutine(function *(emails) {
         }
     }
 });
+//if a file with names is provided, read all lines then generate emails
+if (argv.f) {
+    var names = [];
+    var lineReader = require('readline').createInterface({
+        input: fs.createReadStream(argv.f)
+    });
+    lineReader.on('line', function (line) {
+        if(line)
+            names.push(guessEmail(line, argv.s));
+    });
+    lineReader.on('close', () => {
+        outputEmails(names);
+    })
+
+} else { // argv.n
+    outputEmails([guessEmail(argv.n, argv.s)]);
+}
+//promisify email-existence
+function emailCheck(email) {
+    return new Promise((resolve, reject) => {
+        emailExistence.check(email, (err, data) => {
+            if (err) reject(err);
+            resolve(data)
+        })
+    })
+}
 //Saves to file if -o options used, otherwise print output
 function output(name, email) {
     //if list mode specified, only print email addresses, otherwise print in name <email> form.
     var output = argv.l ? email : name + " <" + email + ">";
     if (argv.o) {
-        fs.appendFile(argv.o, output, function (err) {
+        fs.appendFile(argv.o, output+ '\n', function (err) {
             if (err) console.error("append failed")
         })
     } else {
         console.log(output);
     }
 }
-//capitalize first character in string
-String.prototype.capitalizeFirstLetter = function () {
-    return this.charAt(0).toUpperCase() + this.slice(1);
-};
+
+
 /*Generate a list of emails separated by new lines, given a name, and string of separators separated by commas.
  * Middle name ignored. The empty string "" is no separator (firstNameLastName).
  * Returns object {name: name, emails: [array of emails]}
