@@ -1,4 +1,4 @@
 .idea/
 *.patch
-test.txt
-output.txt
+Test/
+node_modules/

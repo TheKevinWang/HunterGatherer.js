@@ -1,28 +1,34 @@
 {
-  "name": "email-guesser",
-  "version": "1.0.0",
-  "description": "Guess email using name and domain. ",
-  "main": "EmailGuesser.js",
+  "name": "huntergatherer.js",
+  "version": "0.0.1",
+  "description": "Tool for collecting and verifying email addresses.",
+  "main": "HunterGatherer.js",
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "emailjs-imap-client": "^2.1.0",
+    "imap": "^0.8.19",
+    "nodemailer": "^4.6.4",
+    "phantom": "^4.0.12",
+    "singlebyte": "^1.0.13"
+  },
+  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node HunterGatherer.js -n \"Bob Jones\" -s \"_,-\" -d example.com"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TheKevinWang/EmailGuesser.git"
+    "url": "git+https://github.com/TheKevinWang/HunterGatherer.js.git"
   },
   "keywords": [
     "email",
-    "guess",
-    "smtp",
-    "spear",
-    "phishing",
-    "penetration",
-    "testing"
+    "recon",
+    "enumeration",
+    "scraper"
   ],
   "author": "Kevin Wang",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/TheKevinWang/EmailGuesser/issues"
+    "url": "https://github.com/TheKevinWang/HunterGatherer.js/issues"
   },
-  "homepage": "https://github.com/TheKevinWang/EmailGuesser#readme"
+  "homepage": "https://github.com/TheKevinWang/HunterGatherer.js#readme"
 }

@@ -1,43 +1,32 @@
-# EmailGuesser
+# HunterGatherer
 
-Organizations tend to have predicatable email addresses for employees, such as kevin.wang@example.com. EmailGuesser uses common name combinations to generate a list of email addresses. EmailGuesser accepts a file of names separated by new lines, such as output from [theHarvester](https://github.com/laramies/theHarvester). The email addresses can then be validated using [iSMTP](https://github.com/altjx/ipwn). 
+HunterGatherer scrapes names from websites, and uses name combinations to generate a list of email addresses, such as firstname.lastname@example.com. HunterGatherer can validate email addresses using the SMTP RCPT TO command or bounce emails.
 
-
-# Requirements
-
-Node.js 6.9.2 or later  
-mustache -- template engine   
-minimist -- argument parser  
-latinize -- convert strings to latin characters   
-readline -- read from file  
-
-```
-npm install mustache minimist latinize readline
-```
 
 # Usage
 
 Read names from test.txt and output email guesses to output.txt with domain example.com. The default separator is ".".  
 
 ```
-node EmailGuesser.js -f test.txt -o output.txt -d example.com
+node HunterGatherer.js -f test.txt -o output.txt -d example.com
 ```
 Generate emails for name provided, using separators "_" and "-", with output to console. 
 ```
-node EmailGuesser.js -n "Kevin Wang" -s "_,-" -d example.com
+node HunterGatherer.js -n "Bob Jones" -s "_,-" -d example.com
 
-kevinwang@example.com
-wangkevin@example.com
-kwang@example.com
-wkevin@example.com
-kevin_wang@example.com
-wang_kevin@example.com
-k_wang@example.com
-w_kevin@example.com
-kevin-wang@example.com
-wang-kevin@example.com
-k-wang@example.com
-w-kevin@example.com
+Bob Jones <bobjones@example.com>
+Bob Jones <jonesbob@example.com>
+Bob Jones <bjones@example.com>
+Bob Jones <jbob@example.com>
+Bob Jones <bob_jones@example.com>
+Bob Jones <jones_bob@example.com>
+Bob Jones <b_jones@example.com>
+Bob Jones <j_bob@example.com>
+Bob Jones <bob-jones@example.com>
+Bob Jones <jones-bob@example.com>
+Bob Jones <b-jones@example.com>
+Bob Jones <j-bob@example.com>
+
 ```
 
 You can also provide your own template using -t. This is useful when you already know the email naming algorithm. The format of the template is:  
@@ -45,13 +34,19 @@ You can also provide your own template using -t. This is useful when you already
 {{fi}} = first initial  
 {{ln}} = last name  
 {{li}} = last initial  
-{{domain}} = email domain Ex: gmail.com  
+{{domain}} = email domain Ex: gmail.com
+Validate email address by sending a an email and recording the existence of a bounce email. Subject and body will be "test".
 ```
-node EmailGuesser.js -n "Kevin Wang" -d example.com -t {{fi}}{{ln}}@{{domain}}
-
-kwang@example.com
+node HunterGatherer.js -n "Bob Jones" -d example.com -t {{fi}}{{ln}}@{{domain}} -v bounce -u test@test.com -p test
+[*] Sending email to bjones@example.com
+[*] Valid emails found:
+Bob Jones <bjones@example.com>
 ```
+# TODO
 
+NPM
+LinkedIn scraper
+Facebook scraper
 
 # License 
 
