@@ -1,6 +1,6 @@
 # HunterGatherer
 
-![Banner](https://github.com/TheKevinWang/MacroPhishing/raw/master/WordMacroDemo.gif)
+![Banner](https://github.com/TheKevinWang/HunterGatherer.js/blob/master/HunterGatherer.png)
 HunterGatherer scrapes names from websites, and uses name combinations to generate a list of email addresses, such as firstname.lastname@example.com. HunterGatherer can validate email addresses using the SMTP RCPT TO command or bounce emails.
 
 
