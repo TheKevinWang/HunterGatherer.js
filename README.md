@@ -36,6 +36,7 @@ You can also provide your own template using -t. This is useful when you already
 {{ln}} = last name  
 {{li}} = last initial  
 {{domain}} = email domain Ex: gmail.com
+
 Validate email address by sending a an email and recording the existence of a bounce email. Subject and body will be "test".
 ```
 node HunterGatherer.js -n "Bob Jones" -d example.com -t {{fi}}{{ln}}@{{domain}} -v bounce -u test@test.com -p test
